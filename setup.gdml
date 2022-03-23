@@ -103,13 +103,13 @@
 	<constant name="sampleXSize" value="245"/>
 	<constant name="sampleYSize" value="245"/>
 	<constant name="sample_thickness" value="1"/>
-	<constant name="gas_length" value="VesselLength-vessel_thickness-window_thickness-mylar_thickness" />
+	<constant name="gas_length" value="VesselLength-vessel_thickness" />
 
 	<!-- Upper Vessel definitions -->
 	<constant name="UpperVesselLength" value="105" />	<!--in mm's -->
         <!-- Z Positions -->
 
-	<constant name="mylar_ZPosition" value="VesselLength-window_thickness-0.5*mylar_thickness"/>
+	<constant name="mylar_ZPosition" value="VesselLength+0.5*mylar_thickness"/>
 	<constant name="window_ZPosition" value="VesselLength-0.5*window_thickness"/>
         <constant name="sample_ZPosition" value="VesselLength+0.5*sample_thickness"/>
         <constant name="readout_ZPosition" value="vessel_thickness-0.5*readout_thickness" />
