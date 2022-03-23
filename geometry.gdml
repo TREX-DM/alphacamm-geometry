@@ -4,7 +4,7 @@
     
     <tube name="vesselSolid" startphi="0" deltaphi="360" rmin="VesselRadius-vessel_thickness" rmax="VesselRadius" z="VesselLength" aunit="deg" lunit="mm" />
 
-    <tube name="gasSolid" startphi="0" deltaphi="360" rmin="0" rmax="VesselRadius-vessel_thickness" z="gas_length" aunit="deg" lunit="mm" />
+    <tube name="gasSolid1" startphi="0" deltaphi="360" rmin="0" rmax="VesselRadius-vessel_thickness" z="gas_length" aunit="deg" lunit="mm" />
 
     <tube name="bottomSolid1" startphi="0" deltaphi="360" rmin="0" rmax="VesselRadius-vessel_thickness" z="vessel_thickness" aunit="deg" lunit="mm" />
 
@@ -334,18 +334,20 @@
         <positionref ref="wirex_position_12l" />
        </union>
 
-<!-- UpperVessel -->
+<!-- BottomVessel -->
 
-        <subtraction name="gasUpperSolid2">
-            <first ref="gasUpperSolid1"/>
-            <second ref="mylarSolid"/>
-	    <position name="gasSub1"  x="0" y="0" z="-0.5*gasUpperVesselLength + 0.5*mylar_thickness"/>
+      <subtraction name="gasSolid">
+            <first ref="gasSolid1"/>
+            <second ref="windowSolid"/>
+	    <position name="gasSub1"  x="0" y="0" z="0.5*gas_length - 0.5*window_thickness"/>
        </subtraction>
 
+<!-- UpperVessel -->
+
         <subtraction name="gasUpperSolid">
-            <first ref="gasUpperSolid2"/>
-            <second ref="windowSolid"/>
-	    <position name="gasSub2"  x="0" y="0" z="-0.5*gasUpperVesselLength + mylar_thickness + 0.5*window_thickness"/>
+            <first ref="gasUpperSolid1"/>
+            <second ref="mylarSolid"/>
+	    <position name="gasSub2"  x="0" y="0" z="-0.5*gasUpperVesselLength + 0.5*mylar_thickness"/>
        </subtraction>
 
 </solids>
@@ -426,7 +428,7 @@
 
         <physvol name="gas">
             <volumeref ref="gasVolume"/>
-            <position name="gasPosition"  x="0" y="0" z="gas_length*0.5+vessel_thickness"/>
+            <position name="gasPosition"  x="0" y="0" z="0.5*gas_length+vessel_thickness"/>
         </physvol>
         
         <physvol name="cover">
@@ -451,7 +453,7 @@
 
         <physvol name="gas2">
             <volumeref ref="gasUpperVolume"/>
-            <position name="gasUpperPosition"  x="0" y="0" z="VesselLength+0.5*gasUpperVesselLength-window_thickness-mylar_thickness"/>
+            <position name="gasUpperPosition"  x="0" y="0" z="VesselLength+0.5*gasUpperVesselLength"/>
         </physvol>
 
         <physvol name="vessel2">
